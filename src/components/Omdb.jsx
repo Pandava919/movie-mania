@@ -8,30 +8,23 @@ import Movie from './Movie';
 
 
 const Omdb = () => {
-  const [movie, setMovie] = useState("")
+  const [movie, setMovie] = useState("");
   const [movieName, setMovieName] = useState("don");
   const [movies, setMovies] = useState();
+  const [loading, setLoading] = useState(false);
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
   const apiUrl = import.meta.env.VITE_OMDB_API_URL;
-
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    centerMode: true
-  };
 
   // const { apiData, loading } = useFetch(`${apiUrl}?s=${movieName}&apikey=${apiKey}`, movieName)
   // useEffect(() => {
   //   setMovies(apiData)
   // }, [apiData])
 
-  const onChangeHandler = ({ target }) => {
+  const onChangeHandler = ({ target }) => {   //input change handler
     setMovie(target.value)
   }
-  const onClickHandler = () => {
+
+  const onClickHandler = () => {    //Search button handler
     setMovieName(movie)
   }
 
@@ -48,8 +41,6 @@ const Omdb = () => {
   }, [movieName])
   console.log(movies);
   console.log(movieName);
-
-
 
   return (
     < section className='min-h-screen' >
@@ -68,9 +59,9 @@ const Omdb = () => {
             {
               movies ? movies?.map(({ Poster, Title, Year, imdbID }) => {
                 return (
-                  <div key={imdbID}>
+                  <Link to='/movie' key={imdbID}>
                     <Movie poster={Poster} title={Title} year={Year} />
-                  </div>
+                  </Link>
                 )
               }) :
                 <h1 className='text-white text-5xl font-light'> Movies not found</h1>
