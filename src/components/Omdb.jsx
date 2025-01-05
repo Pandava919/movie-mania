@@ -5,6 +5,7 @@ import Input from './Input';
 import Button from './Button';
 import { Link } from 'react-router-dom';
 import Movie from './Movie';
+import Pagination from './Pagination';
 
 
 const Omdb = () => {
@@ -12,6 +13,7 @@ const Omdb = () => {
   const [movieName, setMovieName] = useState("don");
   const [movies, setMovies] = useState();
   const [loading, setLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1)
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
   const apiUrl = import.meta.env.VITE_OMDB_API_URL;
 
@@ -32,7 +34,7 @@ const Omdb = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(`${apiUrl}?s=${movieName}&apikey=${apiKey}`)
-        setMovies(data?.Search)
+        setMovies(data)
       } catch (error) {
         console.log(error);
       }
@@ -53,20 +55,27 @@ const Omdb = () => {
         <section className='h-full w-full flex flex-col gap-5 items-center'>
           <div className='h-20 flex items-center justify-center gap-3 mt-10'>
             <Input type="text" placeholder="Enter a movie name" value={movie} onChangeHandler={onChangeHandler} />
-            <Button enter="Search" onClickHandler={onClickHandler} />
+            <div className='rounded-md p-1.5 px-3 flex items-center justify-center active:bg-red-900 bg-red-800 w-1/4 sm:w-20'>
+              <Button enter="Search" onClickHandler={onClickHandler} />
+            </div>
           </div>
-          <div className='h-full bg-black w-screen flex flex-wrap gap-12 justify-center items-center p-2'>
-            {
-              movies ? movies?.map(({ Poster, Title, Year, imdbID }) => {
-                return (
-                  <Link to={`/movie/${imdbID}`} key={imdbID}>
-                    <Movie poster={Poster} title={Title} year={Year} />
-                  </Link>
-                )
-              }) :
-                <h1 className='text-white text-5xl font-light'> Movies not found</h1>
-            }
-          </div>
+          <section className=' h-full flex w-screen bg-black gap-4 justify-center items-center'>
+            <div className='h-full bg-black flex flex-wrap gap-12 justify-center items-center overflow-x-hidden overflow-y-auto pt-8'>
+              {
+                movies ? movies?.Search?.map(({ Poster, Title, Year, imdbID }) => {
+                  return (
+                    <Link to={`/movie/${imdbID}`} key={imdbID}>
+                      <Movie poster={Poster} title={Title} year={Year} />
+                    </Link>
+                  )
+                }) :
+                  <h1 className='text-white text-5xl font-light'> Movies not found</h1>
+              }
+            </div>
+            <div className='text-white h-full'>
+              <Pagination />
+            </div>
+          </section>
         </section>
       </main >
     </section >
