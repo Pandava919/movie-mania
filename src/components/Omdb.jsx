@@ -59,10 +59,10 @@ const Omdb = () => {
               <Button enter="Search" onClickHandler={onClickHandler} />
             </div>
           </div>
-          <section className=' h-full flex w-screen bg-black gap-4 justify-center items-center'>
-            <div className='h-full bg-black flex flex-wrap gap-12 justify-center items-center overflow-x-hidden overflow-y-auto pt-8'>
+          <section className=' h-full flex bg-black gap-4 justify-center items-center'>
+            <div className='h-full bg-black flex flex-wrap gap-12 justify-center items-center pt-8'>
               {
-                movies ? movies?.Search?.map(({ Poster, Title, Year, imdbID }) => {
+                movies?.Search ? movies?.Search?.map(({ Poster, Title, Year, imdbID }) => {
                   return (
                     <Link to={`/movie/${imdbID}`} key={imdbID}>
                       <Movie poster={Poster} title={Title} year={Year} />
@@ -72,9 +72,10 @@ const Omdb = () => {
                   <h1 className='text-white text-5xl font-light'> Movies not found</h1>
               }
             </div>
-            <div className='text-white h-full'>
-              <Pagination />
-            </div>
+            {movies?.Search &&
+              <div className='text-white h-full'>
+                <Pagination results={movies?.totalResults} />
+              </div>}
           </section>
         </section>
       </main >
