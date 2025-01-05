@@ -55,7 +55,7 @@ const Omdb = () => {
             <Input type="text" placeholder="Enter a movie name" value={movie} onChangeHandler={onChangeHandler} />
             <Button enter="Search" onClickHandler={onClickHandler} />
           </div>
-          <div className='h-full bg-black w-screen flex flex-wrap gap-9 justify-center items-center p-2'>
+          <div className='h-full bg-black w-screen flex flex-wrap gap-12 justify-center items-center p-2'>
             {
               movies ? movies?.map(({ Poster, Title, Year, imdbID }) => {
                 return (
