@@ -3,20 +3,23 @@ import Button from './Button'
 import { BiUpArrow } from 'react-icons/bi'
 import { BiDownArrow } from 'react-icons/bi'
 
-const Pagination = () => {
-    const [pageNumber, setPageNumber] = useState(1);
-    const noOfPages = 0;
-
+const Pagination = ({ results }) => {
+    const [currentPageNumber, setCurrentPageNumber] = useState(1);
+    const noOfPages = Math.ceil(results / 10);
+    //! previous page hanlder
+    const onPreviousPageHandler = () => noOfPages > 1 && currentPageNumber > 1 ? setCurrentPageNumber((prev) => prev - 1) : setCurrentPageNumber(1);
+    //! next page handler
+    const onNextPageHandler = () => currentPageNumber < noOfPages ? setCurrentPageNumber((prev) => prev + 1) : setCurrentPageNumber(noOfPages);
     return (
         <div className='w-10 flex flex-col items-center gap-3'>
             <div className='rounded-full p-1.5 flex items-center justify-center active:bg-red-900 border-white border-2'>
-                <Button enter={<BiUpArrow />} />
+                <Button enter={<BiUpArrow />} onClickHandler={onPreviousPageHandler} />
             </div>
             <div>
-                {pageNumber}
+                {currentPageNumber}
             </div>
             <div className='rounded-full p-1.5 flex items-center justify-center active:bg-red-900 border-white border-2 '>
-                <Button enter={<BiDownArrow />} />
+                <Button enter={<BiDownArrow />} onClickHandler={onNextPageHandler} />
             </div>
         </div>
     )
