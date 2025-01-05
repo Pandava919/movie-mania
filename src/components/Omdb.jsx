@@ -59,7 +59,7 @@ const Omdb = () => {
             {
               movies ? movies?.map(({ Poster, Title, Year, imdbID }) => {
                 return (
-                  <Link to='/movie' key={imdbID}>
+                  <Link to={`/movie/${imdbID}`} key={imdbID}>
                     <Movie poster={Poster} title={Title} year={Year} />
                   </Link>
                 )
