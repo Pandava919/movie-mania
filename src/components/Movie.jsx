@@ -7,7 +7,7 @@ import notFound from '../assets/no_image.jpg';
 const Movie = ({ poster, title, year }) => {
 
     return (
-        <div className=' h-60 sm:h-60 hover:-translate-y-2 duration-300 w-60 flex flex-col items-center rounded-lg bg-red-700 '>
+        <div className=' h-60 sm:h-60 hover:-translate-y-2 duration-300 w-64 flex flex-col items-center rounded-lg bg-red-700 '>
             <img src={poster !== 'N/A' ? poster : notFound} className='h-40 w-48 m-2 rounded-md' />
             <h2 className='w-48 text-ellipsis flex items-center justify-center'> <span className='text-white truncate text-sm font-light'>{title}</span></h2>
             <h4 className='text-white font-light'>{year}</h4>
