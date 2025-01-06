@@ -67,7 +67,7 @@ const Omdb = () => {
           </div>
           <section className=' h-full w-screen flex bg-black justify-center items-center'>
             <div className='w-full h-screen flex justify-center items-center'>
-              {loading ? <h1 className='text-white '>Loading</h1> :
+              {loading ? <h1 className='text-white text-sm sm:text-2xl md:text-4xl '>Loading...</h1> :
                 <div className='h-full w-full bg-black flex flex-wrap gap-12 justify-center items-center pt-8'>
                   {
                     movies?.Search ? movies?.Search?.map(({ Poster, Title, Year, imdbID }) => {
