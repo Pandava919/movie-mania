@@ -71,8 +71,8 @@ const Omdb = () => {
               <Button enter="Search" onClickHandler={onClickHandler} />
             </div>
           </div>
-          <section className=' min-h-screen w-full flex bg-black justify-center items-center flex-col sm:flex-col md:flex-col lg:flex-row'>
-            <div className='w-full h-full flex justify-center items-center'>
+          <section className=' min-h-screen w-full flex bg-black justify-start items-start '>
+            <div className='w-full h-full flex justify-center items-center flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-col'>
               {loading ? <h1 className='text-white '>Loading</h1> :
                 <div className='h-full w-full bg-black flex flex-wrap gap-12 justify-center items-center pt-8'>
                   {
