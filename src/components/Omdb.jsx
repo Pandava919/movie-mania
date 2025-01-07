@@ -21,22 +21,23 @@ const Omdb = () => {
   // useEffect(() => {
   //   setMovies(apiData)
   // }, [apiData])
-
+//! onchange handler
   const onChangeHandler = ({ target }) => {   //input change handler
     setMovie(target.value)
   }
+  //! oncliclick handler
   const onEnterHandler = (e) => {
     if (e.key === "Enter") {
       setMovieName(movie);
       setCurrentPageNumber(1);
     }
   }
-
+//! onclick handler
   const onClickHandler = () => {    //Search button handler
     setMovieName(movie)
     setCurrentPageNumber(1)
   }
-
+//! Fetching the api
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,9 +54,7 @@ const Omdb = () => {
   }, [movieName, currentPageNumber])
   console.log(currentPageNumber);
   console.log(loading);
-
-
-
+  
   return (
     < section className='min-h-screen w-screen bg-black' >
       <nav className='bg-red-800 h-14 flex items-center justify-start w-full' >
