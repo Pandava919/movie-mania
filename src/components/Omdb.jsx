@@ -25,6 +25,12 @@ const Omdb = () => {
   const onChangeHandler = ({ target }) => {   //input change handler
     setMovie(target.value)
   }
+  const onEnterHandler = (e) => {
+    if (e.key === "Enter") {
+      setMovieName(movie);
+      setCurrentPageNumber(1);
+    }
+  }
 
   const onClickHandler = () => {    //Search button handler
     setMovieName(movie)
@@ -51,21 +57,21 @@ const Omdb = () => {
 
 
   return (
-    < section className='min-h-screen w-screen' >
+    < section className='min-h-screen w-screen bg-black' >
       <nav className='bg-red-800 h-14 flex items-center justify-start w-full' >
         <div className='ml-3 h-14 w-1/4 flex items-center justify-start'>
           <h1 className='text-white text-sm font-light sm:text-2xl md:text-4xl '>Movie Mania</h1>
         </div>
       </nav>
-      <main className='min-h-screen flex  w-full bg-black justify-center'>
-        <section className='h-full w-screen flex flex-col gap-5 items-center'>
-          <div className='h-20 flex items-center justify-center gap-3 mt-10'>
-            <Input type="text" placeholder="Enter a movie name" value={movie} onChangeHandler={onChangeHandler} />
+      <main className='min-h-full flex w-full bg-black justify-center'>
+        <section className='h-full w-screen flex flex-col pl-3 gap-5 items-center'>
+          <div className='h-20 w-full flex items-center justify-center gap-3 mt-10'>
+            <Input type="text" placeholder="Enter a movie name" value={movie} onChangeHandler={onChangeHandler} onEnterHandler={onEnterHandler} />
             <div className='rounded-md p-1.5 px-3 flex items-center justify-center active:bg-red-900 bg-red-800 w-1/4 sm:w-20'>
               <Button enter="Search" onClickHandler={onClickHandler} />
             </div>
           </div>
-          <section className=' min-h-screen w-screen flex bg-black justify-center items-center flex-col sm:flex-col md:flex-col lg:flex-row'>
+          <section className=' min-h-screen w-full flex bg-black justify-center items-center flex-col sm:flex-col md:flex-col lg:flex-row'>
             <div className='w-full h-full flex justify-center items-center'>
               {loading ? <h1 className='text-white '>Loading</h1> :
                 <div className='h-full w-full bg-black flex flex-wrap gap-12 justify-center items-center pt-8'>
@@ -80,11 +86,11 @@ const Omdb = () => {
                       <h1 className='text-white text-5xl font-light'> Movies not found</h1>
                   }
                 </div>}
+              {movies?.Search &&
+                <div className='text-white h-full right-0'>
+                  <Pagination results={movies?.totalResults} currentPageNumber={currentPageNumber} setCurrentPageNumber={setCurrentPageNumber} />
+                </div>}
             </div>
-            {movies?.Search &&
-              <div className='text-white h-full right-0'>
-                <Pagination results={movies?.totalResults} currentPageNumber={currentPageNumber} setCurrentPageNumber={setCurrentPageNumber} />
-              </div>}
           </section>
         </section>
       </main >
