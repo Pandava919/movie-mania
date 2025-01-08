@@ -6,6 +6,7 @@ import Button from './Button';
 import { Link } from 'react-router-dom';
 import Movie from './Movie';
 import Pagination from './Pagination';
+import Navbar from './Navbar';
 
 
 const Omdb = () => {
@@ -21,7 +22,7 @@ const Omdb = () => {
   // useEffect(() => {
   //   setMovies(apiData)
   // }, [apiData])
-//! onchange handler
+  //! onchange handler
   const onChangeHandler = ({ target }) => {   //input change handler
     setMovie(target.value)
   }
@@ -32,12 +33,12 @@ const Omdb = () => {
       setCurrentPageNumber(1);
     }
   }
-//! onclick handler
+  //! onclick handler
   const onClickHandler = () => {    //Search button handler
     setMovieName(movie)
     setCurrentPageNumber(1)
   }
-//! Fetching the api
+  //! Fetching the api
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,16 +53,12 @@ const Omdb = () => {
     }
     fetchData()
   }, [movieName, currentPageNumber])
-  console.log(currentPageNumber);
-  console.log(loading);
-  
+
   return (
     < section className='min-h-screen w-screen bg-black' >
-      <nav className='bg-red-800 h-14 flex items-center justify-start w-full' >
-        <div className='ml-3 h-14 w-1/4 flex items-center justify-start'>
-          <h1 className='text-white text-sm font-light sm:text-2xl md:text-4xl '>Movie Mania</h1>
-        </div>
-      </nav>
+      <div>
+        <Navbar />
+      </div>
       <main className='min-h-full flex w-full bg-black justify-center'>
         <section className='h-full w-screen flex flex-col pl-3 gap-5 items-center'>
           <div className='h-20 w-full flex items-center justify-center gap-3 mt-10'>
