@@ -57,7 +57,7 @@ const Omdb = () => {
   return (
     < section className='min-h-screen w-screen bg-black' >
       <div>
-        <Navbar />
+        <Navbar logo='MovieMania' />
       </div>
       <main className='min-h-full flex w-full bg-black justify-center'>
         <section className='h-full w-screen flex flex-col pl-3 gap-5 items-center'>
