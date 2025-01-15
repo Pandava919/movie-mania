@@ -61,9 +61,9 @@ const Omdb = () => {
       </div>
       <main className='min-h-full flex w-full bg-black justify-center'>
         <section className='h-full w-screen flex flex-col pl-3 gap-5 items-center'>
-          <div className='h-20 w-full flex items-center justify-center gap-3 mt-10'>
+          <div className='h-20 w-full flex items-center justify-center gap-3 mt-16'>
             <Input type="text" placeholder="Enter a movie name" value={movie} onChangeHandler={onChangeHandler} onEnterHandler={onEnterHandler} />
-            <div className='rounded-md p-1.5 px-3 flex items-center justify-center active:bg-red-900 bg-red-800 w-1/4 sm:w-20'>
+            <div className='rounded-md text-white text-sm sm:text-lg p-1.5 px-3 flex items-center justify-center active:bg-red-900 bg-red-800 w-1/4 sm:w-20'>
               <Button enter="Search" onClickHandler={onClickHandler} />
             </div>
           </div>
@@ -79,7 +79,7 @@ const Omdb = () => {
                         </Link>
                       )
                     }) :
-                      <h1 className='text-white text-5xl font-light'> Movies not found</h1>
+                      <span className='text-white text-5xl font-light'> Movies not found</span>
                   }
                 </div>}
               {movies?.Search &&

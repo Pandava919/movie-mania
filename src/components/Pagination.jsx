@@ -11,7 +11,7 @@ const Pagination = ({ results, currentPageNumber, setCurrentPageNumber }) => {
     const onNextPageHandler = () => currentPageNumber < noOfPages ? setCurrentPageNumber((prev) => prev + 1) : setCurrentPageNumber(noOfPages);
     return (
         <div className='flex items-center gap-3 flex-row mt-10 sm:flex-row md:flex-row lg:flex-col xl:flex-row'>
-            <div className='rounded-full p-1.5 flex items-center justify-center active:bg-red-900 border-white border-2'>
+            <div className='rounded-full text-white p-1.5 flex items-center justify-center active:bg-red-900 border-white border-2'>
                 <Button enter={<BiUpArrow />} onClickHandler={onPreviousPageHandler} title="Previous" />
             </div>
             <div>
