@@ -35,7 +35,7 @@ const Omdb = () => {
   }
   //! onclick handler
   const onClickHandler = () => {    //Search button handler
-    setMovieName(movie)
+    movie? setMovieName(movie) : alert("Enter a movie name")
     setCurrentPageNumber(1)
   }
   //! Fetching the api
@@ -56,10 +56,10 @@ const Omdb = () => {
 
   return (
     < section className='min-h-screen w-screen bg-black' >
-      <div>
+      <div >
         <Navbar logo='MovieMania' />
       </div>
-      <main className='min-h-full flex w-full bg-black justify-center'>
+      <main className='min-h-full flex w-full bg-black justify-center -z-0'>
         <section className='h-full w-screen flex flex-col pl-3 gap-5 items-center'>
           <div className='h-20 w-full flex items-center justify-center gap-3 mt-16'>
             <Input type="text" placeholder="Enter a movie name" value={movie} onChangeHandler={onChangeHandler} onEnterHandler={onEnterHandler} />
