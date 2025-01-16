@@ -20,7 +20,7 @@ const MovieDetails = () => {
 
     return (
         <section className='min-h-screen w-screen bg-black'>
-            <div>
+            <div >
                 <Navbar logo='MovieMania' />
             </div>
             <section className='w-screen h-screen bg-black flex justify-center items-center'>
@@ -32,7 +32,7 @@ const MovieDetails = () => {
                         </div>
                     </div>
                     <hr className=' h-0 sm:h-full border-black border-l' />
-                    <div className='sm:h-full w-2/4 flex flex-col justify-start items-start gap-1'>
+                    <div className='h-full w-2/4 flex flex-col justify-start items-start gap-1'>
                         <div className='w-full flex gap-4 justify-start items-start'>
                             <span className='w-1/4'>Description: </span>
                             <span className=' w-3/4  font-light  text-black overflow-ellipsis'>{readMore ? movie?.Plot : movie?.Plot?.slice(0, 28) + '...'} <span className='text-blue-700 text-xs '><Button enter={readMore ? "Read Less" : "Read More"} onClickHandler={() => setReadMore(!readMore)} /></span></span>
