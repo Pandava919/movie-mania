@@ -70,7 +70,7 @@ const Omdb = () => {
           </div>
           <section className=' min-h-screen w-full flex bg-black justify-start items-start '>
             <div className='w-full h-full flex justify-center items-center flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-col'>
-              {loading ? <div className='h-full w-full flex items-center justify-center text-white'>
+              {loading ? <div className=' h-full w-full flex items-center justify-center text-white'>
                 <Loading />
               </div> :
                 <div className='h-full w-full bg-black flex flex-wrap gap-12 justify-center items-center pt-8'>
@@ -85,7 +85,7 @@ const Omdb = () => {
                       <span className='text-white text-5xl font-light'> Movies not found</span>
                   }
                 </div>}
-              {movies?.Search &&
+              {movies?.Search && !loading &&
                 <div className='text-white h-full right-0'>
                   <Pagination results={movies?.totalResults} currentPageNumber={currentPageNumber} setCurrentPageNumber={setCurrentPageNumber} />
                 </div>}
