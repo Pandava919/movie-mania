@@ -3,7 +3,7 @@ import React from 'react'
 const Loading = () => {
   return (
     <div>
-      <h1>Loading...</h1> 
+      <span className='animate-spin h-10 w-10 rounded-full border-4 border-b-white border-transparent'>.</span>
     </div>
   )
 }
