@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Movie from './Movie';
 import Pagination from './Pagination';
 import Navbar from './Navbar';
+import Loading from './Loading/Loading';
 
 
 const Omdb = () => {
@@ -35,7 +36,7 @@ const Omdb = () => {
   }
   //! onclick handler
   const onClickHandler = () => {    //Search button handler
-    movie? setMovieName(movie) : alert("Enter a movie name")
+    movie ? setMovieName(movie) : alert("Enter a movie name")
     setCurrentPageNumber(1)
   }
   //! Fetching the api
@@ -69,7 +70,9 @@ const Omdb = () => {
           </div>
           <section className=' min-h-screen w-full flex bg-black justify-start items-start '>
             <div className='w-full h-full flex justify-center items-center flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-col'>
-              {loading ? <h1 className='text-white '>Loading</h1> :
+              {loading ? <div className='h-full w-full flex items-center justify-center text-white'>
+                <Loading />
+              </div> :
                 <div className='h-full w-full bg-black flex flex-wrap gap-12 justify-center items-center pt-8'>
                   {
                     movies?.Search ? movies?.Search?.map(({ Poster, Title, Year, imdbID }) => {
